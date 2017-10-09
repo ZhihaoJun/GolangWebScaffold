@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    image: golang:1.9
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./src:/app/src
+    ports:
+      - 1323:1323
+    command: gin run /app/src/app/main.go
