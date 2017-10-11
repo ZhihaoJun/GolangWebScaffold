@@ -24,7 +24,7 @@
 1. clone这个仓库到本地 `git clone git@github.com:ZhihaoJun/GolangWebScaffold.git`
 2. 在项目根目录运行 `docker-compose up -d`
 3. 访问 [http://localhost:10060/?name=Bingyan](http://localhost:10060/?name=Bingyan) 看到 `Hello, Bingyan!`
-4. 访问 [http://localhost:10060/count](http://localhost:10060/count) 看到 ``
+4. 访问 [http://localhost:10060/count](http://localhost:10060/count) 看到 `Page has been visited 1 times` 刷新可以看到次数在增加
 4. 访问 [http://localhost:10061](http://localhost:10061) 进入数据库管理
    * 用户名 `postgres`
    * 密码为空

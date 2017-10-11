@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strconv"
 
 	"github.com/boj/redistore"
 	"github.com/labstack/echo"
@@ -26,11 +25,11 @@ func (a *App) Hello(c echo.Context) error {
 }
 
 func (a *App) SessionCount(c echo.Context) error {
-	countStr := sessions.GetRaw(c, "count").(string)
-	count, err := strconv.Atoi(countStr)
-	if err != nil {
-		count = 1
+	count := sessions.GetRaw(c, "count")
+	if count == nil {
+		count = 0
 	}
+	count = count.(int) + 1
 	sessions.Set(c, "count", count)
 	if err := sessions.Save(c); err != nil {
 		return c.String(http.StatusInternalServerError, "Session save failed")

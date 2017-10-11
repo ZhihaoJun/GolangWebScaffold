@@ -9,7 +9,7 @@ services:
       - ./src:/app/src
     ports:
       - 127.0.0.1:10060:3000
-    command: sleep 20
+    entrypoint: gin -a 1323 -t /app/src/app/ run
     links:
       - redis-dev:redis
       - postgres-dev:postgres
