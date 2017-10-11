@@ -47,5 +47,5 @@
 * `Dockerfile` 默认为你打开了1323端口
 
 ## 最佳实践
-* 如果需求替换已经在`golang-web-scaffold`镜像中的库，请参考使用 [https://github.com/kardianos/govendor](https://github.com/kardianos/govendor) 或者 [https://github.com/Masterminds/glide](https://github.com/Masterminds/glide) 工具
+* 如果需求替换已经在`golang-web-scaffold`镜像中的库，请参考使用 [govendor](https://github.com/kardianos/govendor) 或者 [glide](https://github.com/Masterminds/glide) 工具
 * 最好是自己修改Dockerfile的构建命令，脱离`golang-web-scaffold`镜像，直接从`golang:1.9`构建，并且自己安装所需库的依赖
