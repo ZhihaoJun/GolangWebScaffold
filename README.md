@@ -11,6 +11,7 @@
   * `github.com/labstack/echo` 
   * `github.com/utahta/echo-sessions`
   * `github.com/boj/redistore`
+  * `github.com/garyburd/redigo`
   * `github.com/codegangsta/gin` 代码热更新工具
 * 下载好预先制作好的docker镜像
   * `docker pull redis`
@@ -30,7 +31,7 @@
    * 密码为空
 
 ## 开发
-* 脚手架使用了gin来热更新加载代码，尝试修改[]()的代码，刷新网页可以看到即时更新的效果。
+* 脚手架使用了gin来热更新加载代码，尝试修改代码，刷新网页可以看到即时更新的效果。
 * 阅读docker-compose.yml可以获得更多关于配置的信息
 * 已经内置了postgresql 9.4版本和redis最新版本
   * postgresql的访问域名是`postgres:5432`
@@ -40,6 +41,11 @@
 * golang库依赖都是在容器内部，为了让ide能够正确提示和补全代码，在本机上也需要安装相应的golang依赖库，推荐使用 [govendor](https://github.com/kardianos/govendor) 工具完成依赖库管理。
 
 ## 部署
-* [Docker Registry](https://docs.docker.com/registry/)
+* **不应该直接使用golang-web-scaffold容器放到线上部署**
+* 开发完成的代码应该构建出一个新的镜像，push到类似[Docker Registry](https://docs.docker.com/registry/)的地方，再进行部署
+* 根目录下的`Dockerfile`文件是一个实例的构建文件，可以直接使用
+* `Dockerfile` 默认为你打开了1323端口
 
 ## 最佳实践
+* 如果需求替换已经在`golang-web-scaffold`镜像中的库，请参考使用 [https://github.com/kardianos/govendor](https://github.com/kardianos/govendor) 或者 [https://github.com/Masterminds/glide](https://github.com/Masterminds/glide) 工具
+* 最好是自己修改Dockerfile的构建命令，脱离`golang-web-scaffold`镜像，直接从`golang:1.9`构建，并且自己安装所需库的依赖
