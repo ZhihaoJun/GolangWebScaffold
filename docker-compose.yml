@@ -1,12 +1,35 @@
 version: '3'
 services:
-  web:
-    image: golang:1.9
+  web-dev:
+    image: zhihaojun/golang-web-scaffold
     environment:
       - TZ=Asia/Shanghai
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./src:/app/src
     ports:
-      - 1323:1323
-    command: gin run /app/src/app/main.go
+      - 127.0.0.1:10060:3000
+    command: sleep 20
+    links:
+      - redis-dev:redis
+      - postgres-dev:postgres
+  redis-dev:
+    image: redis
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+  pgadmin-dev:
+    image: zhihaojun/phppgadmin
+    ports:
+      - 127.0.0.1:10061:80
+    environment:
+      - TZ=Asia/Shanghai
+    links:
+      - postgres-dev:postgresql
+  postgres-dev:
+    image: postgres:9.4
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ=Asia/Shanghai
