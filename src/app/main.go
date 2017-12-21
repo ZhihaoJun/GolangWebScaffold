@@ -8,6 +8,7 @@ import (
 
 	"github.com/boj/redistore"
 	"github.com/labstack/echo"
+	_ "github.com/labstack/echo/middleware"
 	sessions "github.com/utahta/echo-sessions"
 )
 
