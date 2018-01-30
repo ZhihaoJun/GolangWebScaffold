@@ -6,6 +6,7 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - ./src:/app/src
     ports:
       - 127.0.0.1:10060:3000
@@ -19,6 +20,7 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
   pgadmin-dev:
     image: zhihaojun/phppgadmin
     ports:
@@ -31,5 +33,6 @@ services:
     image: postgres:9.4
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
     environment:
       - TZ=Asia/Shanghai
